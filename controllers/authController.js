@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Role = require('../models/Role');
 const bcrypt = require('bcryptjs');
+
 const {
     validationResult
 } = require('express-validator');
@@ -43,7 +44,7 @@ class authController {
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             const userRole = await Role.findOne({
-                value: "ADMIN"
+                value: "USER"
             });
             const user = new User({
                 username,
